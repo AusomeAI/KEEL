@@ -177,6 +177,40 @@ export class ApiClient {
     return response.json();
   }
 
+  // Leave Management endpoints (Wave 4.1)
+  async getLeaveBalances(employeeId: string, asOfDate?: string) {
+    const params = asOfDate ? `?asOfDate=${asOfDate}` : "";
+    const response = await this.fetch(`/gate/employee/${employeeId}/leave-balances${params}`);
+    return response.json();
+  }
+
+  async getLeaveHistory(employeeId: string, limit?: number, offset?: number) {
+    const params = new URLSearchParams();
+    if (limit) params.set("limit", limit.toString());
+    if (offset) params.set("offset", offset.toString());
+
+    const response = await this.fetch(
+      `/gate/employee/${employeeId}/leave-history${params.toString() ? "?" + params.toString() : ""}`
+    );
+    return response.json();
+  }
+
+  async getCurrentEmployee() {
+    const response = await this.fetch(`/auth/me`);
+    return response.json();
+  }
+
+  async getPendingLeaveRequests(type?: string, role?: string, employeeId?: string, limit?: number) {
+    const params = new URLSearchParams();
+    if (type) params.set("type", type);
+    if (role) params.set("role", role);
+    if (employeeId) params.set("employee_id", employeeId);
+    if (limit) params.set("limit", limit.toString());
+
+    const response = await this.fetch(`/gate/pending${params.toString() ? "?" + params.toString() : ""}`);
+    return response.json();
+  }
+
   // Payroll endpoints
   async runPayroll(tenantId: string, data: Record<string, unknown>) {
     const response = await this.fetch(`/payroll/run`, {
