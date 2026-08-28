@@ -25,25 +25,14 @@
  */
 
 export * from "../types/transaction-intent";
+export * from "./pipeline";
 
 /**
  * Control Gate result — outcome of passing an intent through the gate
  */
-export interface ControlGateResult {
-  // To be implemented
-}
+export type ControlGateResult = import("./pipeline").ControlGateOutcome;
 
 /**
- * Stub for control gate implementation (Wave 1+)
+ * Exported instances and utilities
  */
-export interface ControlGate {
-  /**
-   * Process a transaction intent through the control gate
-   *
-   * Returns either:
-   * - An executed transaction (if approved immediately)
-   * - A pending approval (if human review is required)
-   * - An error (if validation, autonomy, or budget checks fail)
-   */
-  execute(intent: any): Promise<ControlGateResult>;
-}
+export { getControlGatePipeline, resetControlGatePipeline } from "./pipeline";

@@ -1,6 +1,5 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "version": "1",
   "globalDependencies": [
     ".dependency-cruiserrc.js",
     "tsconfig.json",
@@ -114,8 +113,7 @@
     },
     "clean": {
       "description": "Clean build artifacts",
-      "cache": false,
-      "outputMode": "new-only"
+      "cache": false
     }
   }
 }

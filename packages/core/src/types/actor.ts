@@ -13,11 +13,25 @@ export type ActorKind = z.infer<typeof ActorKindSchema>;
 export const ActorSchema = z.object({
   kind: ActorKindSchema.describe("Whether this actor is a human or an agent"),
   id: z.string().uuid().describe("The actor's unique identity (UUID)"),
+  email: z
+    .string()
+    .email()
+    .optional()
+    .describe("Email address (for humans)"),
   onBehalfOf: z
     .string()
     .uuid()
     .optional()
     .describe("If set, this actor is acting on behalf of another identity (agent delegated by human)"),
+  agentToken: z
+    .string()
+    .optional()
+    .describe("Short-lived scoped token for agents (Law 10)"),
+  approvedByActorId: z
+    .string()
+    .uuid()
+    .optional()
+    .describe("If set, this transaction was approved by this actor (approval chain)"),
 });
 
 export type Actor = z.infer<typeof ActorSchema>;
