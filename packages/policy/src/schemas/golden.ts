@@ -105,7 +105,7 @@ export const GoldenDatasetSchema = z.object({
   generatedAt: z
     .string()
     .datetime({ offset: true })
-    .transform((v) => new Date(v))
+    .transform((v: string) => new Date(v))
     .optional(),
 });
 

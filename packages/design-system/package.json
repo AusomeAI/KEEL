@@ -26,10 +26,13 @@
     "README.md"
   ],
   "scripts": {
-    "build": "tsc && postcss src/styles/index.css -o dist/styles/index.css",
+    "build": "tsc && tailwindcss -i src/styles/index.css -o dist/styles/index.css",
+    "build:watch": "tsc --watch",
+    "build:css": "tailwindcss -i src/styles/index.css -o dist/styles/index.css --watch",
     "typecheck": "tsc --noEmit",
     "lint": "eslint src --max-warnings 0",
-    "format": "prettier --write src"
+    "format": "prettier --write src",
+    "dev": "concurrently \"pnpm build:watch\" \"pnpm build:css\""
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.1",
@@ -51,6 +54,7 @@
     "@types/react-dom": "^19.0.0",
     "@typescript-eslint/eslint-plugin": "^7.0.0",
     "@typescript-eslint/parser": "^7.0.0",
+    "concurrently": "^8.2.0",
     "eslint": "^8.50.0",
     "postcss": "^8.4.35",
     "postcss-cli": "^11.0.0",

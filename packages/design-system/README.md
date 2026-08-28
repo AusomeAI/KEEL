@@ -120,59 +120,234 @@ Limited, intentional palette:
 
 ## Components
 
-Base components are Radix primitives with Keel styling:
+### 8 Core Components
 
-### Button
+All components are built on Radix UI primitives with Keel styling, CVA for variants, and full WCAG 2.2 AA accessibility.
+
+**Every component includes all states:** default, empty, loading, partial, error, offline, read-only, no-permission, L3
+
+**Every component is responsive:** desktop, tablet, mobile, kiosk layouts
+
+#### 1. Button
 ```tsx
 import { Button } from '@keel/design-system/components';
 
-<Button variant="primary" size="md" disabled={false}>
+<Button 
+  variant="primary" 
+  size="md" 
+  isLoading={false}
+  icon={<Icon />}
+  onClick={handleClick}
+>
   Click me
 </Button>
 ```
 
-**Variants:** primary, secondary, ghost, danger
+**Variants:** primary (brand), secondary (neutral), danger (error), ghost (transparent)
 **Sizes:** sm, md (default), lg
-**States:** default, hover, focus, active, disabled, loading
+**Props:** icon, iconEnd, isLoading, fullWidth, ariaLabel
+**States:** default, hover, focus, active, disabled, loading, readonly, no-permission, L3
 
-### Input
+#### 2. Input
 ```tsx
 import { Input } from '@keel/design-system/components';
 
 <Input 
   type="text" 
   placeholder="Enter email" 
+  label="Email"
+  helperText="We'll never share your email"
+  error={validationError}
   disabled={false}
-  error="Invalid email"
+  iconStart={<EmailIcon />}
 />
 ```
 
-**States:** default, focus, disabled, error, readonly, loading
+**Types:** text, email, password, number, date, search, tel
+**Sizes:** sm, md (default), lg
+**Props:** label, helperText, error, isRequired, iconStart, iconEnd, state
+**States:** default, focus, disabled, error, readonly, no-permission, L3
 
-### Card
+#### 3. Card
 ```tsx
 import { Card } from '@keel/design-system/components';
 
-<Card className="p-lg">
-  <Card.Header>Title</Card.Header>
-  <Card.Body>Content</Card.Body>
-  <Card.Footer>Actions</Card.Footer>
+<Card 
+  variant="elevated" 
+  padding="lg"
+  isLoading={false}
+  state="default"
+  header={<h3>Title</h3>}
+  footer={<Button>Action</Button>}
+>
+  Card content
 </Card>
 ```
 
-### Modal
+**Variants:** default (shadow-sm), elevated (shadow-md hover:shadow-lg), outlined
+**Padding:** sm, md (default), lg
+**Props:** header, footer, isLoading, padding, state
+**States:** default, loading, empty, error, L3
+
+#### 4. Modal
 ```tsx
 import { Modal } from '@keel/design-system/components';
 
-<Modal open={isOpen} onClose={handleClose}>
-  <Modal.Header>Title</Modal.Header>
-  <Modal.Body>Content</Modal.Body>
-  <Modal.Footer>
-    <Button variant="secondary">Cancel</Button>
-    <Button variant="primary">Submit</Button>
-  </Modal.Footer>
+<Modal 
+  open={isOpen} 
+  onOpenChange={setIsOpen}
+  title="Confirm Action"
+  size="md"
+  closeOnBackdropClick={true}
+  isLoading={false}
+  footer={
+    <>
+      <Button variant="secondary">Cancel</Button>
+      <Button variant="primary">Confirm</Button>
+    </>
+  }
+>
+  Are you sure?
 </Modal>
 ```
+
+**Sizes:** sm, md (default), lg
+**Props:** title, footer, hideCloseButton, closeOnBackdropClick, isLoading
+**Features:** Focus trap, keyboard navigation (Escape), ARIA modal role
+**States:** default, loading, L3
+
+#### 5. Form Components
+```tsx
+import { Form, FormField, FormSubmit } from '@keel/design-system/components';
+
+<Form onSubmit={handleSubmit} isSubmitting={isSubmitting} spacing="md">
+  <FormField
+    name="email"
+    label="Email"
+    type="email"
+    isRequired={true}
+    error={errors.email}
+    helperText="Your work email address"
+  />
+  
+  <FormField
+    name="password"
+    label="Password"
+    type="password"
+    isRequired={true}
+    error={errors.password}
+  />
+  
+  <FormSubmit isLoading={isSubmitting}>
+    Sign In
+  </FormSubmit>
+</Form>
+```
+
+**Form:** Wrapper with automatic submit handling, isSubmitting state
+**FormField:** Label + Input + Error + Helper text
+**FormSubmit:** Submit button with loading state
+**Props:** onSubmit, isSubmitting, layout, spacing
+
+#### 6. Table
+```tsx
+import { Table } from '@keel/design-system/components';
+
+<Table
+  data={rows}
+  columns={[
+    { key: 'name', header: 'Name', render: (row) => row.name, sortable: true },
+    { key: 'email', header: 'Email', render: (row) => row.email },
+    { key: 'status', header: 'Status', render: (row) => <Badge>{row.status}</Badge> },
+  ]}
+  getRowKey={(row) => row.id}
+  selectable={true}
+  selectedRows={selected}
+  onSelectionChange={setSelected}
+  sortBy="name"
+  sortDirection="asc"
+  onSort={handleSort}
+  page={1}
+  pageSize={10}
+  totalRows={100}
+  onPageChange={handlePageChange}
+  density="default"
+  showPagination={true}
+  showDensityToggle={true}
+/>
+```
+
+**Features:** Sortable columns, pagination, row selection, density toggle (compact/default/comfortable)
+**Keyboard:** Arrow keys, Enter for sorting, Space for selection
+**Mobile:** Responsive stacking, horizontal scroll
+**States:** empty, loading (via aria-busy)
+
+#### 7. Sidebar
+```tsx
+import { Sidebar } from '@keel/design-system/components';
+
+<Sidebar
+  logo={<Logo />}
+  items={[
+    { id: 'dashboard', label: 'Dashboard', icon: <DashIcon /> },
+    { id: 'team', label: 'Team', icon: <TeamIcon />, collapsible: true, items: [...] },
+    { id: 'settings', label: 'Settings', icon: <GearIcon /> },
+  ]}
+  userMenu={[
+    { id: 'profile', label: 'Profile', onClick: () => {} },
+    { id: 'logout', label: 'Logout', onClick: () => {} },
+  ]}
+  userName="Jane Doe"
+  userAvatar={<Avatar />}
+  selectedItemId={selectedId}
+  onSelectItem={setSelectedId}
+  isOpen={sidebarOpen}
+  onToggleMobile={setSidebarOpen}
+/>
+```
+
+**Features:** Logo, navigation items with icons, submenu support, user profile, collapsible sections
+**Mobile:** Drawer sidebar with hamburger menu (hidden on desktop)
+**Props:** items[], userMenu[], userName, userAvatar, selectedItemId, isOpen, onToggleMobile
+**Responsive:** Fixed sidebar on desktop, drawer on mobile
+
+#### 8. TopNav
+```tsx
+import { TopNav } from '@keel/design-system/components';
+
+<TopNav
+  logo={<Logo />}
+  breadcrumbs={[
+    { label: 'Home', href: '/' },
+    { label: 'People', href: '/people' },
+    { label: 'Jane Doe', current: true },
+  ]}
+  currentTenant={{ id: 'acme', label: 'ACME Corp' }}
+  tenants={[...]}
+  onTenantChange={handleTenantChange}
+  currentGroup={...}
+  groups={[...]}
+  onGroupChange={handleGroupChange}
+  currentEntity={...}
+  entities={[...]}
+  onEntityChange={handleEntityChange}
+  currentBranch={...}
+  branches={[...]}
+  onBranchChange={handleBranchChange}
+  userName="Jane Doe"
+  userAvatar={<Avatar />}
+  userMenu={[
+    { label: 'Profile', onClick: () => {} },
+    { label: 'Settings', onClick: () => {} },
+  ]}
+  theme="light"
+  onThemeChange={handleThemeChange}
+/>
+```
+
+**Features:** Logo, breadcrumbs, context switchers (Tenant/Group/Entity/Branch), user menu, theme toggle
+**Mobile:** Context switchers stack on secondary row
+**Props:** All context items optional; use showContextSwitcher and showBreadcrumbs to hide
 
 ## Theme Switching
 

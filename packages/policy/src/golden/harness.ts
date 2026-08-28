@@ -108,7 +108,12 @@ export class GoldenDatasetValidator {
    * Count total rules in a policy.
    */
   private countRules(policy: CompiledPolicy): number {
-    return policy.ruleGroups.reduce((sum, group) => sum + group.rules.length, 0);
+    const ruleGroups = (policy as any).ruleGroups;
+    if (!ruleGroups) {
+      // If ruleGroups doesn't exist, use ruleGraph length
+      return (policy as any).ruleGraph?.length || 0;
+    }
+    return ruleGroups.reduce((sum: number, group: any) => sum + group.rules.length, 0);
   }
 
   /**

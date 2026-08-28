@@ -21,3 +21,17 @@ export * from './schemas/index.js';
 
 // Builder API
 export { definePolicy, defineRule, PolicyBuilder, RuleBuilder } from './builder.js';
+
+// Compiler API
+export {
+  compilePolicy,
+  validatePolicySyntax,
+  validateSemantics,
+  buildRuleGraph,
+  topologicalSort,
+  serializeCompiledPolicy,
+  deserializeCompiledPolicy,
+  computePolicyHash,
+  signPolicy,
+  verifyPolicySignature,
+} from './compiler/index.js';

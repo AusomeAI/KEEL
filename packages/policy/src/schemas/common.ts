@@ -109,7 +109,7 @@ export type Actor = z.infer<typeof ActorSchema>;
 export const TimestampSchema = z
   .string()
   .datetime({ offset: true })
-  .transform((v) => new Date(v))
+  .transform((v: string) => new Date(v))
   .describe('ISO 8601 timestamp');
 
 export type Timestamp = Date;

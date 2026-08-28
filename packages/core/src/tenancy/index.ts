@@ -7,15 +7,17 @@
  * This module defines the tenancy hierarchy and provides utilities for
  * scoping operations to tenant context.
  *
- * Wave 1 deliverable: Type definitions and kernel interfaces
- * Wave 2+: PostgreSQL RLS policy enforcement
+ * Wave 1 deliverable: Type definitions and kernel implementation
+ * - ValidatedTenancyContext: Typed context for all operations
+ * - TenancyKernel: Factory and validation methods
+ * - TenancyContextManager: Request-scoped context management
+ * - TenancyAwareSQLBuilder: Query builders with automatic tenancy scoping
  */
 
 export * from "../types/tenant";
-
-/**
- * Stub for tenancy kernel implementation (Wave 1+)
- */
-export interface TenancyKernel {
-  // To be implemented
-}
+export {
+  ValidatedTenancyContext,
+  TenancyKernel,
+  TenancyContextManager,
+  TenancyAwareSQLBuilder,
+} from "./tenancy-kernel";

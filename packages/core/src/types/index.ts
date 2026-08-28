@@ -12,6 +12,7 @@ export * from "./money";
 export * from "./duration";
 export * from "./actor";
 export * from "./tenant";
+export * from "./rbac";
 export * from "./transaction-intent";
 export * from "./decision-record";
 export * from "./event";
