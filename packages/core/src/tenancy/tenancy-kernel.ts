@@ -22,7 +22,7 @@ import {
   LegalEntityId,
   BranchId,
 } from "../types/tenant";
-import { Result, Ok, Err } from "../types/result";
+import { Result, ok, err } from "../types/result";
 
 /**
  * Validated tenancy context that can be used for all queries
@@ -142,12 +142,12 @@ export class TenancyKernel {
         branchId,
       });
 
-      return Ok(new ValidatedTenancyContext(parsed));
+      return ok(new ValidatedTenancyContext(parsed));
     } catch (error) {
       if (error instanceof z.ZodError) {
-        return Err(new Error(`Invalid tenancy context: ${error.message}`));
+        return err(`Invalid tenancy context: ${error.message}`);
       }
-      return Err(error as Error);
+      return err((error as Error).message);
     }
   }
 
@@ -157,12 +157,12 @@ export class TenancyKernel {
   static fromJSON(data: unknown): Result<ValidatedTenancyContext> {
     try {
       const parsed = TenantContextSchema.parse(data);
-      return Ok(new ValidatedTenancyContext(parsed));
+      return ok(new ValidatedTenancyContext(parsed));
     } catch (error) {
       if (error instanceof z.ZodError) {
-        return Err(new Error(`Invalid tenancy context: ${error.message}`));
+        return err(`Invalid tenancy context: ${error.message}`);
       }
-      return Err(error as Error);
+      return err((error as Error).message);
     }
   }
 
@@ -172,12 +172,12 @@ export class TenancyKernel {
   static validateHierarchy(context: TenantContext): Result<void> {
     try {
       TenantContextSchema.parse(context);
-      return Ok(undefined);
+      return ok(undefined);
     } catch (error) {
       if (error instanceof z.ZodError) {
-        return Err(new Error(`Invalid tenancy hierarchy: ${error.message}`));
+        return err(`Invalid tenancy hierarchy: ${error.message}`);
       }
-      return Err(error as Error);
+      return err((error as Error).message);
     }
   }
 }

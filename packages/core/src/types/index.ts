@@ -9,7 +9,15 @@
  */
 
 export * from "./money";
-export * from "./duration";
+export {
+  add as addDuration,
+  multiply as multiplyDuration,
+  type Duration,
+  DurationSchema,
+  fromHoursMinutes,
+  toHoursMinutes,
+  toISO8601,
+} from "./duration";
 export * from "./actor";
 export * from "./tenant";
 export * from "./rbac";
