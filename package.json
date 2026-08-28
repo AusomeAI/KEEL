@@ -1,0 +1,41 @@
+{
+  "name": "keel",
+  "version": "0.0.1",
+  "description": "KEEL — The Agentic HR Operating System. Deterministic core with governed agent plane.",
+  "type": "module",
+  "private": true,
+  "packageManager": "pnpm@9.1.0",
+  "engines": {
+    "node": ">=22.0.0",
+    "pnpm": ">=9.1.0"
+  },
+  "scripts": {
+    "build": "turbo run build --concurrency=4",
+    "build:calc": "pnpm --filter @keel/calc build",
+    "dev": "turbo run dev --concurrency=4",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
+    "test": "turbo run test",
+    "test:l3": "turbo run test:l3",
+    "test:watch": "turbo run test:watch",
+    "ci:laws": "pnpm run ci:laws:imports && pnpm run ci:laws:routes && pnpm run ci:laws:ledger",
+    "ci:laws:imports": "dependency-cruiser --config .dependency-cruiserrc.js --output-type err-long .",
+    "ci:laws:routes": "node scripts/ci-laws/verify-transaction-intent-routes.mjs",
+    "ci:laws:ledger": "node scripts/ci-laws/verify-ledger-append-only.mjs",
+    "ci:test": "turbo run test --concurrency=2",
+    "ci:coverage": "turbo run coverage",
+    "format": "turbo run format && prettier --write .",
+    "gameday": "pnpm run gameday:l3 && pnpm run gameday:l4",
+    "gameday:l3": "turbo run gameday:l3",
+    "gameday:l4": "turbo run gameday:l4",
+    "clean": "turbo run clean && rm -rf node_modules pnpm-lock.yaml",
+    "keel:l3": "KEEL_MODE=l3 pnpm run dev"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "dependency-cruiser": "^14.2.0",
+    "prettier": "^3.0.0",
+    "turbo": "^2.0.0",
+    "typescript": "^5.3.0"
+  }
+}

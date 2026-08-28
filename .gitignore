@@ -1,0 +1,108 @@
+# Dependencies
+node_modules/
+pnpm-lock.yaml
+yarn.lock
+package-lock.json
+.pnpm-store/
+
+# Build outputs
+dist/
+build/
+*.tsbuildinfo
+.next/
+out/
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# Rust/WASM
+target/
+Cargo.lock
+*.wasm
+*.wasm.d.ts
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+.env.local
+.env.*.local
+*.sublime-project
+*.sublime-workspace
+
+# Environment
+.env
+.env.development
+.env.production
+.env.test
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-error.log*
+
+# OS
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+
+# Turbo
+.turbo/
+
+# Game-day and test artifacts
+gameday-results/
+.keel-test-cache/
+
+# Local development
+.keel-local.yml
+sqlite.db
+
+# Secrets and credentials (never commit)
+*.key
+*.pem
+*.p12
+.aws/
+.gcloud/
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Cache
+.cache/
+.eslintcache
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# AI/LLM-generated placeholders
+.env.placeholder
+.secrets.placeholder
+
+# Build artifacts from architecture tests
+.arch-test-results/
+
+# Policy compilation artifacts (pre-signed)
+packages/policy/dist/
+packages/policy/*.compiled.json
+
+# Calculation kernel artifacts
+packages/calc/target/
+packages/calc/pkg/
+
+# Don't commit local settings
+settings.local.json
+
+# IDE temp files
+.history/
+*.orig

@@ -1,0 +1,121 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "version": "1",
+  "globalDependencies": [
+    ".dependency-cruiserrc.js",
+    "tsconfig.json",
+    ".prettierrc.json"
+  ],
+  "globalEnv": [
+    "CI",
+    "NODE_ENV",
+    "KEEL_MODE"
+  ],
+  "tasks": {
+    "build": {
+      "description": "Build the package",
+      "outputs": [
+        "dist/**",
+        ".next/**",
+        "build/**"
+      ],
+      "cache": true,
+      "dependsOn": [
+        "^build"
+      ]
+    },
+    "build:calc": {
+      "description": "Build Rust/WASM calculation kernel",
+      "outputs": [
+        "dist/**"
+      ],
+      "cache": true
+    },
+    "lint": {
+      "description": "Run ESLint and other linters",
+      "outputs": [],
+      "cache": true
+    },
+    "typecheck": {
+      "description": "Run TypeScript type checker",
+      "outputs": [],
+      "cache": true
+    },
+    "test": {
+      "description": "Run unit and integration tests",
+      "outputs": [
+        "coverage/**"
+      ],
+      "cache": false,
+      "dependsOn": [
+        "^build"
+      ]
+    },
+    "test:l3": {
+      "description": "Test L3 deterministic-only mode (Agent Plane blackholed)",
+      "outputs": [
+        "coverage/**"
+      ],
+      "cache": false,
+      "dependsOn": [
+        "^build"
+      ],
+      "env": [
+        "AGENT_PLANE_DISABLED=true",
+        "LLM_ENDPOINTS_BLACKHOLED=true"
+      ]
+    },
+    "test:watch": {
+      "description": "Run tests in watch mode",
+      "outputs": [],
+      "cache": false
+    },
+    "coverage": {
+      "description": "Generate test coverage report",
+      "outputs": [
+        "coverage/**"
+      ],
+      "cache": true,
+      "dependsOn": [
+        "test"
+      ]
+    },
+    "dev": {
+      "description": "Start development server",
+      "cache": false,
+      "persistent": true
+    },
+    "format": {
+      "description": "Format code with Prettier",
+      "outputs": [],
+      "cache": false
+    },
+    "gameday:l3": {
+      "description": "L3 continuity game-day: full operation without Agent Plane",
+      "outputs": [
+        "gameday-results/**"
+      ],
+      "cache": false,
+      "env": [
+        "GAMEDAY_L3=true",
+        "AGENT_PLANE_DISABLED=true"
+      ]
+    },
+    "gameday:l4": {
+      "description": "L4 continuity game-day: offline and read-only operation",
+      "outputs": [
+        "gameday-results/**"
+      ],
+      "cache": false,
+      "env": [
+        "GAMEDAY_L4=true",
+        "NETWORK_DISABLED=true"
+      ]
+    },
+    "clean": {
+      "description": "Clean build artifacts",
+      "cache": false,
+      "outputMode": "new-only"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+packages:
+  # Applications (user-facing)
+  - 'apps/web'
+  - 'apps/mobile'
+  - 'apps/kiosk'
+  - 'apps/admin'
+
+  # Backend services
+  - 'services/ledger'
+  - 'services/gate'
+  - 'services/workflow'
+  - 'services/payroll-run'
+  - 'services/integration'
+  - 'services/reporting'
+  - 'services/agent-plane'
+
+  # Shared libraries and tools
+  - 'packages/core'
+  - 'packages/policy'
+  - 'packages/calc'
+  - 'packages/design-system'
+  - 'packages/sdk'
+  - 'packages/testing'
+
+  # Jurisdiction packs
+  - 'packs/us'
+  - 'packs/eu'
+  - 'packs/apac'
+
+# Lockfile strategy: the default committed pnpm-lock.yaml
+# ensures deterministic installs across all machines and CI.
