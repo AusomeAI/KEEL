@@ -79,7 +79,17 @@ export class ApiClient {
   }
 
   // Transaction Intent (Control Gate) endpoints
-  async submitIntent(intent: TransactionIntent) {
+  async submitIntent(intent: {
+    type: string;
+    subject_id: string;
+    payload: Record<string, unknown>;
+    actor_id: string;
+    actor_kind: "HUMAN" | "AGENT";
+    as_of?: string;
+    effective_from?: string;
+    approved_by_id?: string;
+    on_behalf_of?: string;
+  }) {
     const response = await this.fetch("/gate/submit", {
       method: "POST",
       body: JSON.stringify(intent),
@@ -87,23 +97,27 @@ export class ApiClient {
     return response.json();
   }
 
-  async getPendingApprovals(tenantId: string) {
-    const response = await this.fetch(`/gate/pending?tenant=${tenantId}`);
+  async getPendingApprovals(limit?: number, offset?: number) {
+    const params = new URLSearchParams();
+    if (limit) params.set("limit", limit.toString());
+    if (offset) params.set("offset", offset.toString());
+
+    const response = await this.fetch(`/gate/pending?${params.toString()}`);
     return response.json();
   }
 
-  async approvePending(pendingId: string, reasoning?: string) {
+  async approvePending(pendingId: string, approvedById: string) {
     const response = await this.fetch(`/gate/approve/${pendingId}`, {
       method: "POST",
-      body: JSON.stringify({ reasoning }),
+      body: JSON.stringify({ approved_by_id: approvedById }),
     });
     return response.json();
   }
 
-  async rejectPending(pendingId: string, reasoning: string) {
+  async rejectPending(pendingId: string, rejectedById: string, reason: string) {
     const response = await this.fetch(`/gate/reject/${pendingId}`, {
       method: "POST",
-      body: JSON.stringify({ reasoning }),
+      body: JSON.stringify({ rejected_by_id: rejectedById, reason }),
     });
     return response.json();
   }

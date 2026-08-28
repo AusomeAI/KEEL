@@ -1,10 +1,28 @@
 {
   "name": "@keel/gate",
   "version": "0.0.1",
-  "description": "KEEL - gate",
+  "description": "KEEL Control Gate - Transaction boundary between Agent Plane and Deterministic Core",
   "type": "module",
   "private": true,
   "engines": {
     "node": ">=22.0.0"
+  },
+  "scripts": {
+    "dev": "node --watch src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "test": "node --test dist/**/*.test.js",
+    "migrate": "node src/db/migrate.ts"
+  },
+  "dependencies": {
+    "@keel/core": "workspace:*",
+    "@keel/policy": "workspace:*",
+    "fastify": "^4.25.0",
+    "pg": "^8.11.0",
+    "zod": "^3.22.0"
+  },
+  "devDependencies": {
+    "@types/pg": "^8.11.0",
+    "typescript": "^5.3.0"
   }
 }

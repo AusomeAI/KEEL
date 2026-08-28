@@ -24,14 +24,40 @@ export function HireEmployeePage() {
       const formData = new FormData(e.currentTarget);
       const data = Object.fromEntries(formData);
 
-      // TODO: Submit HIRE_EMPLOYEE intent through Control Gate
-      // const result = await getApiClient().submitIntent({
+      // Get API client and auth context (TODO: use actual hooks)
+      // const { user } = useAuthContext();
+      // const { tenantId } = useTenancyContext();
+      // const apiClient = getApiClient();
+
+      // Submit HIRE_EMPLOYEE intent through Control Gate
+      // This would normally be:
+      // const result = await apiClient.submitIntent({
       //   type: "HIRE_EMPLOYEE",
-      //   ...
+      //   subject_id: randomUUID(),  // New employee ID
+      //   payload: {
+      //     first_name: data.firstName,
+      //     last_name: data.lastName,
+      //     email: data.email,
+      //     job_title: data.jobTitle,
+      //     salary: parseInt(data.salary),
+      //     start_date: data.startDate,
+      //   },
+      //   actor_id: user.id,
+      //   actor_kind: "HUMAN",
       // });
 
-      showSuccess("Employee hired", "Pending HR approval");
-      navigate({ to: "/people" });
+      // For now, show placeholder message
+      showSuccess(
+        "Employee hire request submitted",
+        `Pending manager and HR approval. ${
+          false ? "Will be executed shortly." : "Form integration in progress."
+        }`
+      );
+
+      // Navigate after a brief delay to show success message
+      setTimeout(() => {
+        navigate({ to: "/people" });
+      }, 2000);
     } catch (error: any) {
       showError("Failed to hire employee", error.message);
     } finally {
