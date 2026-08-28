@@ -1,18 +1,19 @@
 /**
- * @keel/policy — Policy DSL, Compiler, and Golden Dataset Harness
+ * @keel/policy — Policy DSL, Compiler, Execution, and Golden Dataset Harness
  *
  * This package provides the complete policy-as-code infrastructure:
  * 1. Declarative DSL for authoring HR policies (Zod-based schemas)
  * 2. Compiler that converts DSL to typed rule graphs
- * 3. Golden dataset harness for 100% rule coverage testing
- * 4. Policy versioning, signing, and deployment
+ * 3. Execution engine for deterministic policy evaluation
+ * 4. Golden dataset harness for 100% rule coverage testing (Law 6)
+ * 5. Policy versioning, signing, and deployment
  *
  * Policies are never LLM-interpreted. They are compiled to deterministic rule graphs
- * and executed by the Rust/WASM kernel in packages/calc.
+ * and executed by the TypeScript engine (and later Rust/WASM kernel in packages/calc).
  *
  * No I/O, no clock, no randomness. Given identical inputs, output is byte-identical forever.
  *
- * See ADR 0002 (Policy-as-Code), ADR 0004 (DSL Design).
+ * See ADR 0002 (Policy-as-Code), ADR 0005 (Policy Compiler Design).
  * See Law 2: Manual path first. Law 6: No policy without golden dataset.
  */
 
@@ -35,3 +36,14 @@ export {
   signPolicy,
   verifyPolicySignature,
 } from './compiler/index.js';
+
+// Execution Engine API (Wave 2+)
+export {
+  PolicyExecutionEngine,
+  executePolicyOnce,
+  executeRetroactive,
+  type EmployeeDataSnapshot,
+  type TimePeriodData,
+  type RuleExecutionResult,
+  type PolicyExecutionResult,
+} from './execution/engine.js';
