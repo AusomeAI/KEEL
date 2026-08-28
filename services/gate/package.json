@@ -1,0 +1,10 @@
+{
+  "name": "@keel/gate",
+  "version": "0.0.1",
+  "description": "KEEL - gate",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=22.0.0"
+  }
+}

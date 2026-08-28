@@ -1,0 +1,10 @@
+{
+  "name": "@keel/payroll-run",
+  "version": "0.0.1",
+  "description": "KEEL - payroll-run",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=22.0.0"
+  }
+}

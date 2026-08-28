@@ -1,0 +1,10 @@
+{
+  "name": "apac-app",
+  "version": "0.0.1",
+  "description": "KEEL - apac",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=22.0.0"
+  }
+}

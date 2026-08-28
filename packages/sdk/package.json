@@ -1,0 +1,10 @@
+{
+  "name": "@keel/sdk",
+  "version": "0.0.1",
+  "description": "KEEL - sdk",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=22.0.0"
+  }
+}

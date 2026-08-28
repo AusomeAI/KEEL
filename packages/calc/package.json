@@ -1,0 +1,10 @@
+{
+  "name": "@keel/calc",
+  "version": "0.0.1",
+  "description": "KEEL - calc",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=22.0.0"
+  }
+}

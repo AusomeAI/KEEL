@@ -1,0 +1,10 @@
+{
+  "name": "@keel/testing",
+  "version": "0.0.1",
+  "description": "KEEL - testing",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=22.0.0"
+  }
+}

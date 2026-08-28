@@ -1,0 +1,354 @@
+/**
+ * Keel Design System — CSS Variables
+ *
+ * This file generates CSS custom properties from the design tokens.
+ * Supports both light and dark modes through data-theme attribute
+ * and prefers-color-scheme media query.
+ *
+ * Usage:
+ * - Light theme: <html data-theme="light">
+ * - Dark theme: <html data-theme="dark">
+ * - System theme: <html> (respects prefers-color-scheme)
+ *
+ * In CSS: var(--color-neutral-50), var(--space-lg), etc.
+ */
+
+@layer base {
+  /* Light theme (default) */
+  :root {
+    color-scheme: light;
+
+    /* Colors: Light theme uses light backgrounds, dark text */
+    --color-neutral-50: #FAFAFA;
+    --color-neutral-100: #F5F5F5;
+    --color-neutral-200: #E7E7E7;
+    --color-neutral-300: #D1D1D1;
+    --color-neutral-400: #A0A0A0;
+    --color-neutral-500: #717171;
+    --color-neutral-600: #525252;
+    --color-neutral-700: #3F3F3F;
+    --color-neutral-800: #262626;
+    --color-neutral-900: #0D0D0D;
+    --color-neutral-950: #000000;
+
+    --color-success-50: #F0FDF4;
+    --color-success-100: #DCFCE7;
+    --color-success-200: #BBF7D0;
+    --color-success-300: #86EFAC;
+    --color-success-400: #4ADE80;
+    --color-success-500: #22C55E;
+    --color-success-600: #16A34A;
+    --color-success-700: #15803D;
+    --color-success-800: #166534;
+    --color-success-900: #145231;
+    --color-success-950: #0D2818;
+
+    --color-warning-50: #FFFBEB;
+    --color-warning-100: #FEF3C7;
+    --color-warning-200: #FDE68A;
+    --color-warning-300: #FCD34D;
+    --color-warning-400: #FBBF24;
+    --color-warning-500: #F59E0B;
+    --color-warning-600: #D97706;
+    --color-warning-700: #B45309;
+    --color-warning-800: #92400E;
+    --color-warning-900: #78350F;
+    --color-warning-950: #451A03;
+
+    --color-error-50: #FEF2F2;
+    --color-error-100: #FEE2E2;
+    --color-error-200: #FECACA;
+    --color-error-300: #FCA5A5;
+    --color-error-400: #F87171;
+    --color-error-500: #EF4444;
+    --color-error-600: #DC2626;
+    --color-error-700: #B91C1C;
+    --color-error-800: #991B1B;
+    --color-error-900: #7F1D1D;
+    --color-error-950: #451A1A;
+
+    --color-info-50: #EFF6FF;
+    --color-info-100: #DBEAFE;
+    --color-info-200: #BFDBFE;
+    --color-info-300: #93C5FD;
+    --color-info-400: #60A5FA;
+    --color-info-500: #3B82F6;
+    --color-info-600: #2563EB;
+    --color-info-700: #1D4ED8;
+    --color-info-800: #1E40AF;
+    --color-info-900: #1E3A8A;
+    --color-info-950: #0C2340;
+
+    --color-brand-50: #EEF2FF;
+    --color-brand-100: #E0E7FF;
+    --color-brand-200: #C7D2FE;
+    --color-brand-300: #A5B4FC;
+    --color-brand-400: #818CF8;
+    --color-brand-500: #6366F1;
+    --color-brand-600: #4F46E5;
+    --color-brand-700: #4338CA;
+    --color-brand-800: #3730A3;
+    --color-brand-900: #312E81;
+    --color-brand-950: #1E1B4B;
+
+    --color-accent-50: #F0FDFA;
+    --color-accent-100: #CCFBF1;
+    --color-accent-200: #99F6E4;
+    --color-accent-300: #5EEAD4;
+    --color-accent-400: #2DD4BF;
+    --color-accent-500: #14B8A6;
+    --color-accent-600: #0D9488;
+    --color-accent-700: #0F766E;
+    --color-accent-800: #115E59;
+    --color-accent-900: #134E4A;
+    --color-accent-950: #0D3C38;
+
+    /* Semantic color aliases (light theme) */
+    --color-bg-primary: var(--color-neutral-50);
+    --color-bg-secondary: var(--color-neutral-100);
+    --color-bg-tertiary: var(--color-neutral-200);
+    --color-text-primary: var(--color-neutral-950);
+    --color-text-secondary: var(--color-neutral-600);
+    --color-text-tertiary: var(--color-neutral-400);
+    --color-border: var(--color-neutral-300);
+    --color-border-subtle: var(--color-neutral-200);
+
+    /* Spacing tokens */
+    --space-0: 0px;
+    --space-xs: 4px;
+    --space-sm: 8px;
+    --space-md: 12px;
+    --space-lg: 16px;
+    --space-xl: 24px;
+    --space-2xl: 32px;
+    --space-3xl: 48px;
+    --space-4xl: 64px;
+
+    /* Typography */
+    --font-system: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+      "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+      "Helvetica Neue", sans-serif;
+    --font-monospace: "SF Mono", "Monaco", "Courier New", monospace;
+    --font-code: "Fira Code", "Source Code Pro", "Courier New", monospace;
+
+    --font-size-xs: 13px;
+    --font-size-sm: 14px;
+    --font-size-base: 16px;
+    --font-size-lg: 18px;
+    --font-size-h4: 20px;
+    --font-size-h3: 24px;
+    --font-size-h2: 28px;
+    --font-size-h1: 32px;
+    --font-size-display: 48px;
+
+    --line-height-tight: 1.25;
+    --line-height-normal: 1.5;
+    --line-height-relaxed: 1.75;
+    --line-height-loose: 2;
+
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    --font-weight-extrabold: 800;
+
+    /* Effects */
+    --shadow-none: none;
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-base: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
+      0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+      0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+      0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+    --focus-ring: 0 0 0 3px rgba(99, 102, 241, 0.5);
+    --focus-ring-error: 0 0 0 3px rgba(239, 68, 68, 0.5);
+    --focus-ring-success: 0 0 0 3px rgba(34, 197, 94, 0.5);
+
+    --radius-none: 0px;
+    --radius-xs: 2px;
+    --radius-sm: 4px;
+    --radius-md: 6px;
+    --radius-lg: 8px;
+    --radius-xl: 12px;
+    --radius-full: 9999px;
+
+    /* Animations */
+    --duration-instant: 0ms;
+    --duration-fast: 200ms;
+    --duration-normal: 300ms;
+    --duration-slow: 400ms;
+
+    --easing-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --easing-in: cubic-bezier(0.7, 0, 0.84, 0);
+    --easing-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+    --easing-linear: linear;
+
+    /* Z-index scale */
+    --z-base: 0;
+    --z-dropdown: 100;
+    --z-sticky: 200;
+    --z-overlay: 1000;
+    --z-modal: 1100;
+    --z-popover: 1050;
+    --z-tooltip: 1000;
+    --z-alert: 2000;
+    --z-notification: 2000;
+    --z-banner: 2000;
+  }
+
+  /* Dark theme */
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+
+      /* Invert neutral scale */
+      --color-neutral-50: #0D0D0D;
+      --color-neutral-100: #1A1A1A;
+      --color-neutral-200: #262626;
+      --color-neutral-300: #3F3F3F;
+      --color-neutral-400: #525252;
+      --color-neutral-500: #717171;
+      --color-neutral-600: #A0A0A0;
+      --color-neutral-700: #D1D1D1;
+      --color-neutral-800: #E7E7E7;
+      --color-neutral-900: #F5F5F5;
+      --color-neutral-950: #FAFAFA;
+
+      /* Colors stay the same (hue doesn't change with theme) */
+      /* Only lightness is inverted for text/background use */
+
+      /* Semantic aliases (dark theme) */
+      --color-bg-primary: var(--color-neutral-50);
+      --color-bg-secondary: var(--color-neutral-100);
+      --color-bg-tertiary: var(--color-neutral-200);
+      --color-text-primary: var(--color-neutral-950);
+      --color-text-secondary: var(--color-neutral-600);
+      --color-text-tertiary: var(--color-neutral-400);
+      --color-border: var(--color-neutral-300);
+      --color-border-subtle: var(--color-neutral-200);
+
+      /* Shadows in dark mode need darker layers */
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+      --shadow-base: 0 1px 3px 0 rgba(0, 0, 0, 0.4),
+        0 1px 2px 0 rgba(0, 0, 0, 0.3);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4),
+        0 2px 4px -1px rgba(0, 0, 0, 0.3);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4),
+        0 4px 6px -2px rgba(0, 0, 0, 0.2);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.4),
+        0 10px 10px -5px rgba(0, 0, 0, 0.15);
+    }
+  }
+
+  /* Explicit dark theme (data-theme="dark" overrides system) */
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+
+    --color-neutral-50: #0D0D0D;
+    --color-neutral-100: #1A1A1A;
+    --color-neutral-200: #262626;
+    --color-neutral-300: #3F3F3F;
+    --color-neutral-400: #525252;
+    --color-neutral-500: #717171;
+    --color-neutral-600: #A0A0A0;
+    --color-neutral-700: #D1D1D1;
+    --color-neutral-800: #E7E7E7;
+    --color-neutral-900: #F5F5F5;
+    --color-neutral-950: #FAFAFA;
+
+    --color-bg-primary: var(--color-neutral-50);
+    --color-bg-secondary: var(--color-neutral-100);
+    --color-bg-tertiary: var(--color-neutral-200);
+    --color-text-primary: var(--color-neutral-950);
+    --color-text-secondary: var(--color-neutral-600);
+    --color-text-tertiary: var(--color-neutral-400);
+    --color-border: var(--color-neutral-300);
+    --color-border-subtle: var(--color-neutral-200);
+
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+    --shadow-base: 0 1px 3px 0 rgba(0, 0, 0, 0.4),
+      0 1px 2px 0 rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4),
+      0 2px 4px -1px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4),
+      0 4px 6px -2px rgba(0, 0, 0, 0.2);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.4),
+      0 10px 10px -5px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Explicit light theme (data-theme="light" overrides system) */
+  :root[data-theme="light"] {
+    color-scheme: light;
+  }
+
+  /* Accessibility: reduce motion */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* Base element styles */
+  body {
+    font-family: var(--font-system);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-normal);
+    color: var(--color-text-primary);
+    background-color: var(--color-bg-primary);
+    transition: background-color var(--duration-fast) var(--easing-in-out),
+      color var(--duration-fast) var(--easing-in-out);
+  }
+
+  /* Headings */
+  h1 {
+    font-size: var(--font-size-h1);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tight);
+  }
+
+  h2 {
+    font-size: var(--font-size-h2);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tight);
+  }
+
+  h3 {
+    font-size: var(--font-size-h3);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-tight);
+  }
+
+  h4 {
+    font-size: var(--font-size-h4);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-tight);
+  }
+
+  /* Focus visible for accessibility */
+  *:focus-visible {
+    outline: 2px solid var(--color-brand-500);
+    outline-offset: 2px;
+  }
+
+  /* Code blocks */
+  code {
+    font-family: var(--font-code);
+    font-size: 0.9em;
+  }
+
+  pre {
+    font-family: var(--font-monospace);
+    background-color: var(--color-neutral-100);
+    padding: var(--space-lg);
+    border-radius: var(--radius-md);
+    overflow-x: auto;
+  }
+}

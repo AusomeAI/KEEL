@@ -1,0 +1,65 @@
+{
+  "name": "@keel/design-system",
+  "version": "0.0.1",
+  "description": "Keel Design System: Radix-based components with custom tokens, light/dark theme, accessibility-first",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./tokens": {
+      "types": "./dist/tokens/index.d.ts",
+      "import": "./dist/tokens/index.js"
+    },
+    "./components": {
+      "types": "./dist/components/index.d.ts",
+      "import": "./dist/components/index.js"
+    },
+    "./css": "./dist/styles/index.css"
+  },
+  "files": [
+    "dist",
+    "src",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc && postcss src/styles/index.css -o dist/styles/index.css",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src --max-warnings 0",
+    "format": "prettier --write src"
+  },
+  "dependencies": {
+    "@radix-ui/react-dialog": "^1.1.1",
+    "@radix-ui/react-form": "^0.0.1",
+    "@radix-ui/react-label": "^2.0.2",
+    "@radix-ui/react-slot": "^2.0.2",
+    "@radix-ui/react-popover": "^1.0.7",
+    "@radix-ui/react-scroll-area": "^1.0.5",
+    "@radix-ui/react-separator": "^1.0.3",
+    "@radix-ui/react-tabs": "^1.0.4",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "eslint": "^8.50.0",
+    "postcss": "^8.4.35",
+    "postcss-cli": "^11.0.0",
+    "prettier": "^3.0.0",
+    "tailwindcss": "^3.4.0",
+    "typescript": "^5.3.0"
+  },
+  "peerDependencies": {
+    "react": ">=19.0.0",
+    "react-dom": ">=19.0.0"
+  }
+}

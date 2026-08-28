@@ -1,0 +1,10 @@
+{
+  "name": "@keel/policy",
+  "version": "0.0.1",
+  "description": "KEEL Policy DSL and Compiler",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=22.0.0"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "name": "@keel/ledger",
+  "version": "0.0.1",
+  "description": "KEEL Bitemporal Event Store and Ledger",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest",
+    "test:watch": "vitest --watch",
+    "test:l3": "vitest",
+    "lint": "eslint src --ext .ts",
+    "format": "prettier --write src",
+    "migrate": "node scripts/migrate.mjs",
+    "clean": "rm -rf dist"
+  },
+  "keywords": [
+    "keel",
+    "ledger",
+    "event-sourcing",
+    "bitemporal",
+    "append-only",
+    "postgresql"
+  ],
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "dependencies": {
+    "@keel/core": "workspace:*",
+    "pg": "^8.11.0",
+    "pino": "^8.16.0",
+    "fastify": "^4.25.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/pg": "^8.11.0",
+    "typescript": "^5.3.0",
+    "vitest": "^1.0.0",
+    "eslint": "^8.54.0",
+    "@typescript-eslint/eslint-plugin": "^6.13.0",
+    "@typescript-eslint/parser": "^6.13.0",
+    "prettier": "^3.1.0"
+  }
+}

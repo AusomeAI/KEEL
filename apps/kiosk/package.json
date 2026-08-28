@@ -1,0 +1,10 @@
+{
+  "name": "kiosk-app",
+  "version": "0.0.1",
+  "description": "KEEL - kiosk",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=22.0.0"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "name": "@keel/workflow",
+  "version": "0.0.1",
+  "description": "KEEL - workflow",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=22.0.0"
+  }
+}
